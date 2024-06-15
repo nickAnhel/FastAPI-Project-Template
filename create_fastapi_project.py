@@ -1,0 +1,110 @@
+"""
+Script to create project structure
+
+fastapi-project
+├── alembic/
+├── src
+│   ├── auth
+│   │   ├── router.py
+│   │   ├── schemas.py  # pydantic models
+│   │   ├── models.py  # db models
+│   │   ├── config.py  # local configs
+│   │   ├── repository.py
+│   │   ├── service.py
+│   │   └── utils.py
+│   ├── some_app
+│   │   ├── router.py
+│   │   ├── schemas.py
+│   │   ├── models.py
+│   │   ├── repository.py
+│   │   ├── service.py
+│   │   └── utils.py
+│   ├── config.py  # global configs
+│   ├── models.py  # global models
+│   ├── database.py  # db configs
+│   └── main.py
+│   └── routes.py
+├── tests/
+│   ├── auth
+│   └── some_app
+├── templates/
+│   └── base.html
+├── requirements.txt
+├── .pylintrc
+├── .env
+├── .gitignore
+└── alembic.ini
+"""
+
+import os
+
+
+# create alembic folder
+os.mkdir("alembic")
+
+# create src folder
+os.mkdir("src")
+open("src/__init__.py", "w", encoding="utf-8").close()
+open("src/config.py", "w", encoding="utf-8").close()
+open("src/models.py", "w", encoding="utf-8").close()
+open("src/database.py", "w", encoding="utf-8").close()
+open("src/main.py", "w", encoding="utf-8").close()
+open("src/routes.py", "w", encoding="utf-8").close()
+
+# create src/auth folder
+os.mkdir("src/auth")
+open("src/auth/router.py", "w", encoding="utf-8").close()
+open("src/auth/scemas.py", "w", encoding="utf-8").close()
+open("src/auth/models.py", "w", encoding="utf-8").close()
+open("src/auth/config.py", "w", encoding="utf-8").close()
+open("src/auth/repository.py", "w", encoding="utf-8").close()
+open("src/auth/service.py", "w", encoding="utf-8").close()
+open("src/auth/utils.py", "w", encoding="utf-8").close()
+
+# create src/some_app folder
+os.mkdir("src/some_app")
+open("src/some_app/router.py", "w", encoding="utf-8").close()
+open("src/some_app/scemas.py", "w", encoding="utf-8").close()
+open("src/some_app/models.py", "w", encoding="utf-8").close()
+open("src/some_app/repository.py", "w", encoding="utf-8").close()
+open("src/some_app/service.py", "w", encoding="utf-8").close()
+open("src/some_app/utils.py", "w", encoding="utf-8").close()
+
+# create tests folder
+os.mkdir("tests")
+os.mkdir("tests/auth")
+os.mkdir("tests/some_app")
+
+# create templates folder
+os.mkdir("templates")
+open("templates/base.html", "w", encoding="utf-8").close()
+
+# create files
+open("requirements.txt", "w", encoding="utf-8").close()
+open(".env", "w", encoding="utf-8").close()
+open("alembic.ini", "w", encoding="utf-8").close()
+
+with open(".pylintrc", "w", encoding="utf-8") as file:
+    file.write(
+"""
+[MESSAGES CONTROL]
+disable = missing-function-docstring,
+        missing-module-docstring,
+        missing-class-docstring,
+        import-outside-toplevel,
+        attribute-defined-outside-init,
+        line-too-long,
+        invalid-str-returned,
+        no-member,
+        unused-argument,
+        import-error,
+        not-callable,
+        redefined-builtin,
+        broad-exception-caught,
+        missing-timeout,
+        redefined-outer-name,
+"""
+    )
+
+with open(".gitignore", "w", encoding="utf-8") as file:
+    file.write(".vscode\n.venv\n.env\n.pylintrc\n*.sqlite3\n__pycache__")
